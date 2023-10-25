@@ -2,10 +2,11 @@ package migrator
 
 import (
 	"fmt"
-	"github.com/spf13/cobra"
 	"go-skeleton/pkg"
 	"go-skeleton/pkg/database"
 	"go-skeleton/tools/migrator"
+
+	"github.com/spf13/cobra"
 )
 
 type Migrator struct {
@@ -28,7 +29,7 @@ func (m *Migrator) DeclareCommands(cmd *cobra.Command) {
 
 func (m *Migrator) Migrate(_ *cobra.Command, _ []string) {
 	migratorInstance := migrator.NewMigrator(pkg.MigratorDependencies["mysql"].(*database.MySql))
-	migratorInstance.MigrateAllDomains()
+	migratorInstance.Migrate()
 }
 
 func (m *Migrator) BootMigrator(_ *cobra.Command, _ []string) {
